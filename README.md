@@ -10,7 +10,7 @@
 
 
 ## Description
-In this project, I build a wheeled robot and programmed it to navigate autonomously through a series of tasks, using Arduino, motors, encoders and distance sensors.<br>
+In this project, I copy and adapt a robot navigate autonomously through a series of tasks, using Arduino, motors, encoders and distance sensors.<br>
 Take a look at my [portfolio post](https://yaelbenshalom.github.io/mechatronics/index.html) for more information about the project.
 
 
@@ -27,7 +27,7 @@ Take a look at my [portfolio post](https://yaelbenshalom.github.io/mechatronics/
 I used several components to control the robot motion:
 1. Arduino
 2. Motors & encoders:
-    - PMW motor and encoder - One on each rear wheel to activate and control the motion
+    - BLDC motor and encoder - One on each rear wheel to activate and control the motion
     - Servo motor - Located on the front of the vehicle and used to rotate the TOF sensor to desired scanning angle
 3. Sensors
     - IR sensor - One on each side of the vehicle to measure side distance
