@@ -43,11 +43,10 @@ The system components:
     Diagram TBD
 
 Arduino pin usage:
-    <p align="center">
-        <img align="center" src="https://github.com/YaelBenShalom/Autonomous-Robot-Navigation-and-Control/blob/main/images/project4_pin_use.png" width="60%">
-    </p>
-
+    Diagram TBD
+    
 The autonomous vehicle:
+Similar to 
     <p align="center">
         <img align="center" src="https://github.com/YaelBenShalom/Autonomous-Robot-Navigation-and-Control/blob/main/images/vehicle.jpg" width="60%">
     </p>
