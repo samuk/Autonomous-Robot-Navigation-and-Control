@@ -6,6 +6,10 @@
 #include <VL53L0X.h>
 #include <Wire.h>
 #include <math.h>
+#include "Arduino.h"
+#include <SimpleFOC.h>
+#include "SimpleFOCDrivers.h"
+#include "comms/i2c/I2CCommanderMaster.h"
 
 #define ADO 0
 #if ADO
@@ -13,19 +17,36 @@
 #else
 #define MPU9250_ADDRESS 0x68 // Device address when ADO = 0
 #define AK8963_ADDRESS 0x0C  // Address of magnetometer
+#define TARGET_I2C_ADDRESS 0x60
 #endif
 
 VL53L0X TOF_Sensor;
 Servo Servo_Motor;
+I2CCommanderMaster commander;
 
 volatile int Button = 18; // Define button pin that can get interrupts
 
-const uint8_t PWM_Right = 3; // Angular velocity of right motor
-const uint8_t PWM_Left =
-    2; // Angular velocity of left motor, connected to pin 11
-const uint8_t DIR_Right = 12; // Direction of right motor
-const uint8_t DIR_Left = 13;  // Direction of left motor
-const uint8_t Encoder = 19;   // Wheel encoder pin
+//Old PWM code commented out here
+//#const uint8_t PWM_Right = 3;  Angular velocity of right motor
+//const uint8_t PWM_Left =
+//    2; // Angular velocity of left motor, connected to pin 11
+//const uint8_t DIR_Right = 12; // Direction of right motor
+//const uint8_t DIR_Left = 13;  // Direction of left motor
+//const uint8_t Encoder = 19;   // Wheel encoder pin
+
+// ...other setup code - not sure if these should be 'const'
+
+const int Wire.setClock(400000);          // use same speed on target device!
+const int Wire.begin();                   // initialize i2c in controller mode
+const int commander.addI2CMotors(TARGET_I2C_ADDRESS, 1);            // add target device, left motor
+const int commander.addI2CMotors(TARGET_I2C_ADDRESS2, 1);         // add target device, right motor
+//const int commander.addI2CMotors(TARGET_I2C_ADDRESS, 1, &wire2);  // or on a different i2c bus
+const int commander.init();               // init commander
+const int Wire.onReceive(onReceive);      // connect the interrupt handlers
+const int Wire.onRequest(onRequest);
+
+}
+
 
 const int IR_Right = A7;       // Define IR right sensor pin
 const int IR_Left = A0;        // Define IR left sensor pin
@@ -138,10 +159,14 @@ void setup() {
   pinMode(Button, INPUT); // Define interrupt pin as INPUT
   lmd.setEnabled(true);
   lmd.setIntensity(10);
+    
+  /// !!!!Needs edit for FOC commander!!!  
   pinMode(PWM_Right, OUTPUT);
   pinMode(PWM_Left, OUTPUT);
   pinMode(DIR_Right, OUTPUT);
   pinMode(DIR_Left, OUTPUT);
+    
+  // IR sensor
   pinMode(IR_Right, INPUT);    // Returns distance from right (IR sensor)
   pinMode(IR_Left, INPUT);     // Returns distance from left (IR sensor)
   pinMode(US_Distance, INPUT); // Returns distance from top (US sensor)
