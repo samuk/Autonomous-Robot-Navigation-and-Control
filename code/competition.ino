@@ -192,7 +192,7 @@ void loop() {
   Serial.println("Mission done");
 }
 
-///////////////// Motion functions /////////////////
+///////////////// Motion functions Needs updating for FOC commander /////////////////
 
 // Function for movind forwards
 void Move_Forwards(float Speed) {
