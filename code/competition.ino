@@ -160,11 +160,11 @@ void setup() {
   lmd.setEnabled(true);
   lmd.setIntensity(10);
     
-  /// !!!!Needs edit for FOC commander!!!  
-  pinMode(PWM_Right, OUTPUT);
-  pinMode(PWM_Left, OUTPUT);
-  pinMode(DIR_Right, OUTPUT);
-  pinMode(DIR_Left, OUTPUT);
+ /// !!!!Needs edit for FOC commander!!!  
+/// pinMode(PWM_Right, OUTPUT);
+/// pinMode(PWM_Left, OUTPUT);
+///  pinMode(DIR_Right, OUTPUT);
+///  pinMode(DIR_Left, OUTPUT);
     
   // IR sensor
   pinMode(IR_Right, INPUT);    // Returns distance from right (IR sensor)
@@ -194,22 +194,22 @@ void loop() {
 
 ///////////////// Motion functions Needs updating for FOC commander /////////////////
 
-// Function for movind forwards
+// Function for moving forwards
 void Move_Forwards(float Speed) {
   convertion_const = 1023 / 100.0;
-  digitalWrite(DIR_Right, HIGH);
-  digitalWrite(DIR_Left, HIGH);
-  Timer3.pwm(PWM_Right, Speed * convertion_const);
-  Timer3.pwm(PWM_Left, Speed * convertion_const);
+//Needs updating for FOC commander//   digitalWrite(DIR_Right, HIGH);
+//Needs updating for FOC commander//   digitalWrite(DIR_Left, HIGH);
+//Needs updating for FOC commander//   Timer3.pwm(PWM_Right, Speed * convertion_const);
+//Needs updating for FOC commander//   Timer3.pwm(PWM_Left, Speed * convertion_const);
 }
 
 // Function for moving backwards
 void Move_Backwards(float Speed) {
   convertion_const = 1023 / 100.0;
-  digitalWrite(DIR_Right, LOW);
-  digitalWrite(DIR_Left, LOW);
-  Timer3.pwm(PWM_Right, (Speed * convertion_const);
-  Timer3.pwm(PWM_Left, (Speed * convertion_const);
+//Needs updating for FOC commander// digitalWrite(DIR_Right, LOW);
+//Needs updating for FOC commander// digitalWrite(DIR_Left, LOW);
+//Needs updating for FOC commander// Timer3.pwm(PWM_Right, (Speed * convertion_const);
+//Needs updating for FOC commander//  Timer3.pwm(PWM_Left, (Speed * convertion_const);
 }
 
 // Function for turning around to the right in specify angle
@@ -226,10 +226,10 @@ void Turn_Right_In_Angle(float Angle) {
     Desired_Angle += 360;
   }
   convertion_const = 1023 / 100.0;
-  digitalWrite(DIR_Right, LOW);
-  digitalWrite(DIR_Left, HIGH);
-  Timer3.pwm(PWM_Right, Rotation_Speed * convertion_const);
-  Timer3.pwm(PWM_Left, Rotation_Speed * convertion_const);
+ //Needs updating for FOC commander//  digitalWrite(DIR_Right, LOW);
+ //Needs updating for FOC commander//   digitalWrite(DIR_Left, HIGH);
+ //Needs updating for FOC commander//  Timer3.pwm(PWM_Right, Rotation_Speed * convertion_const);
+ //Needs updating for FOC commander//  Timer3.pwm(PWM_Left, Rotation_Speed * convertion_const);
   threshold = 2.0;
   while (((Yaw <= Desired_Angle - threshold) ||
           (Yaw >= Desired_Angle + threshold)) &&
@@ -261,10 +261,10 @@ void Turn_Left_In_Angle(float Angle) {
     Desired_Angle += 360;
   }
   convertion_const = 1023 / 100.0;
-  digitalWrite(DIR_Right, HIGH);
-  digitalWrite(DIR_Left, LOW);
-  Timer3.pwm(PWM_Right, Rotation_Speed * convertion_const);
-  Timer3.pwm(PWM_Left, Rotation_Speed * convertion_const);
+//Needs updating for FOC commander//   digitalWrite(DIR_Right, HIGH);
+//Needs updating for FOC commander//   digitalWrite(DIR_Left, LOW);
+//Needs updating for FOC commander//   Timer3.pwm(PWM_Right, Rotation_Speed * convertion_const);
+//Needs updating for FOC commander//   Timer3.pwm(PWM_Left, Rotation_Speed * convertion_const);
   threshold = 2.0;
   while (((Yaw <= Desired_Angle - threshold) ||
           (Yaw >= Desired_Angle + threshold)) &&
@@ -285,16 +285,16 @@ void Turn_Left_In_Angle(float Angle) {
 // Function for turning (right or left) while driving
 void Turn(float Speed_Right, float Speed_Left) {
   convertion_const = 1023 / 100.0;
-  digitalWrite(DIR_Right, HIGH);
-  digitalWrite(DIR_Left, HIGH);
-  Timer3.pwm(PWM_Right, Speed_Right * convertion_const);
-  Timer3.pwm(PWM_Left, Speed_Left * convertion_const);
+//Needs updating for FOC commander//   digitalWrite(DIR_Right, HIGH);
+//Needs updating for FOC commander//   digitalWrite(DIR_Left, HIGH);
+//Needs updating for FOC commander//   Timer3.pwm(PWM_Right, Speed_Right * convertion_const);
+//Needs updating for FOC commander//  Timer3.pwm(PWM_Left, Speed_Left * convertion_const);
 }
 
 // Function for stopping both motors
 void Stop() {
-  Timer3.pwm(PWM_Right, 0);
-  Timer3.pwm(PWM_Left, 0);
+//Needs updating for FOC commander//   Timer3.pwm(PWM_Right, 0);
+//Needs updating for FOC commander//   Timer3.pwm(PWM_Left, 0);
 }
 
 ///////////////////  End mission functions  ///////////////////
