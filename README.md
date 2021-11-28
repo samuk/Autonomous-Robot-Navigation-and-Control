@@ -12,13 +12,13 @@
 ## Description
 In this project, I copy and adapt a robot navigate autonomously through a series of tasks, using Arduino, motors, encoders and distance sensors.<br>
 
-
 This is an adaptation of a project [documented in this post](https://yaelbenshalom.github.io/mechatronics/index.html) for more information about the project.
 
 
 ## Overview
 
 ### Tasks
+0.1 spin motors
 1. Navigating through a maze
 2. Driving through changing-slope way, keeping constant roll
 3. Following curved wall, keeping constant distance
@@ -29,7 +29,7 @@ This is an adaptation of a project [documented in this post](https://yaelbenshal
 I propose several components to control the robot motion:
 1. Arduino running on - [ESP32 Dev C board](https://www.olimex.com/Products/IoT/ESP32/ESP32-DevKit-LiPo/open-source-hardware) for 'brain'
 2. Motors & encoders:
-    - [2205 BLDC motor and encoder](https://www.aliexpress.com/item/4000784118326.html) - One on each rear wheel to activate and control the motion
+    - [2205 BLDC motor](https://www.aliexpress.com/item/4000784118326.html) with [AS5840A encoders](https://media.digikey.com/pdf/Data%20Sheets/Austriamicrosystems%20PDFs/AS5048A,B.pdf)- One on each rear wheel to activate and control the motion
     - [Deng Driver board](https://www.aliexpress.com/item/1005003311241556.html) running [this I2C code](https://github.com/simplefoc/Arduino-FOC-drivers/tree/master/src/comms/i2c#target-device-motor-driver)
     - Servo motor - Located on the front of the vehicle and used to rotate the TOF sensor to desired scanning angle
 3. Sensors
